@@ -26,6 +26,9 @@ public class Exercises {
         3. 3 raccoons are playing in the woods. 2 go home to eat dinner. How
         many raccoons are left in the woods?
         */
+		int racoonsPlaying = 3;
+		int racoonsLeave = 2;
+		int racoonsRemaining - racoonsPlaying - racoonsLeave;
 
 
         /* Exercise 4
