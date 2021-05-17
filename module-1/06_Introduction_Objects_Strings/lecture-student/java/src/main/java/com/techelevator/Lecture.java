@@ -14,6 +14,8 @@ public class Lecture {
 		 * is not the case for most classes */
 
 		/* create an new instance of String using a literal */
+		String myString = "Hi, I'm a little happy string";
+		String anotherString;
 
 		
 		System.out.println();
@@ -22,6 +24,15 @@ public class Lecture {
 		System.out.println("******************************");
 		System.out.println();
 
+		String ikea = "Swedish Furniture";
+		ikea.charAt(3);
+		System.out.println(ikea.charAt(3));
+
+		System.out.println("contains examples");
+		boolean isItThere = ikea.contains("dish");
+		System.out.println("ikea contains 'dish': " + isItThere);
+		System.out.println("Ends with: " + ikea.endsWith("ture"));
+		System.out.println("index of: " + ikea.indexOf('e'));
 
 		/* Other commonly used methods:
 		 *
@@ -46,6 +57,7 @@ public class Lecture {
 
 		/* Double equals will compare to see if the two variables, hello1 and
 		 * hello2 point to the same object in memory. Are they the same object? */
+
 		if (hello1 == hello2) {
 			System.out.println("They are equal!");
 		} else {
