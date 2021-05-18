@@ -62,6 +62,28 @@ public class Lecture {
 		System.out.println("####################");
 		System.out.println();
 
+		System.out.println("####################");
+		System.out.println("       QUEUES");
+		System.out.println("####################");
+		System.out.println();
+
+		/////////////////////
+		// PROCESSING ITEMS IN A QUEUE
+		/////////////////////
+
+		System.out.println("####################");
+		System.out.println("       STACKS");
+		System.out.println("####################");
+		System.out.println();
+
+		////////////////////
+		// PUSHING ITEMS TO THE STACK
+		////////////////////
+
+		////////////////////
+		// POPPING THE STACK
+		////////////////////
+
 
 	}
 }
