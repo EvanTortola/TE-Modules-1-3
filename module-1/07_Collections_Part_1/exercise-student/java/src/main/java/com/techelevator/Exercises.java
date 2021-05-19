@@ -54,8 +54,20 @@ public class Exercises {
 	 no4LetterWords( {"Jack", "Jill", "Jane", "John", "Jim"} )  ->  ["Jim"]
 	 */
 	public List<String> no4LetterWords(String[] stringArray) {
-		List<String> exactlyFour = new ArrayList<>();
 
+
+		// exclude all words that contain exactly 4 characters
+
+		List<String> words = new ArrayList<>();
+
+			// return array list containing same strings in same order as array of strings
+			for ( String word : stringArray ){
+				if (word.length()!= 4){
+					words.add(word);
+				}
+		}
+
+		return words;
 	}
 
 	/*
@@ -65,8 +77,20 @@ public class Exercises {
 	 arrayInt2ListDouble( {84, 99, 3285, 13, 877} ) -> [42, 49.5, 1642.5, 6.5, 438.5]
 	 */
 	public List<Double> arrayInt2ListDouble(int[] intArray) {
+		List<Double> divideDouble = new ArrayList<Double>();
 
-	}
+		for (Integer willDivide: intArray) {
+			divideDouble.add(willDivide /2.0 );
+		}
+
+		return divideDouble;
+
+		}
+		//divide each int in array by 2
+		// return an arraylist of doubles
+
+
+
 
 	/*
 	 Given a List of Integers, return the largest value.
@@ -110,7 +134,23 @@ public class Exercises {
 	 foundIntTwice( [9, 23, 44, 2, 88, 44], 44) -> true
 	 */
 	public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
+		int count = 0;
+
+		for (Integer findTwice: integerList ){
+			if (intToFind == findTwice){
+				count = count + 1;
+
+
+			}
+		}
+		if (count == 2){
+			return true;
+		}
+
 		return false;
+
+
+
 	}
 
 	/*
@@ -126,6 +166,25 @@ public class Exercises {
 	HINT: To convert an Integer x to a String, you can use x.toString() in your code. For example, if x = 1, then x.toString() returns "1."
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
+
+		List <String> fizzBuzzList = new ArrayList<String>();
+
+		for (Integer num : integerArray){
+			if (num % 3 == 0 && num % 5 == 0){
+				fizzBuzzList.add("FizzBuzz");
+
+			}
+			else if (num % 5 == 0){
+				fizzBuzzList.add("Buzz");
+			}
+			else if (num % 3 == 0) {
+				fizzBuzzList.add("Fizz");
+			}
+			else {
+				fizzBuzzList.add(Integer.toString(num));
+			}
+			return fizzBuzzList;
+		}
 		return null;
 	}
 
@@ -137,7 +196,24 @@ public class Exercises {
 	 interleaveLists( [1, 2, 3], [4, 5, 6] )  ->  [1, 4, 2, 5, 3, 6]
 	 */
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
-		return null;
+		List<Integer> interLeave = new ArrayList<Integer>();
+
+		//int longer = Math.max(listOne.size(), listTwo.size());
+
+		for (int i = 0; i < Math.max(listOne.size(), listTwo.size()); i++) {
+			if ( i < listOne.size()){
+				interLeave.add(listOne.get(i));
+			}
+
+			if ( i < listTwo.size()){
+				interLeave.add(listTwo.get(i));
+			}
+
+		}
+
+
+
+		return interLeave;
 	}
 
 }

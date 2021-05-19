@@ -333,7 +333,14 @@ public class Exercises {
 	 stringX("xabxxxcdx") → "xabcdx"
 	 */
 	public String stringX(String str) {
-		return null;
+
+		if (str.length() < 3){
+			return str;
+		}
+
+		String midString = str.substring(1, str.length() - 1);
+		midString = midString.replace("x", "");
+		return str.substring(0,1) + midString + str.substring(str.length() - 1);
 	}
 
 	/*
