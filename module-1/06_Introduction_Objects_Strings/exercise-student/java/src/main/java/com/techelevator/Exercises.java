@@ -267,7 +267,7 @@ public class Exercises {
 	 countXX("xxx") → 2
 	 countXX("xxxx") →
 	 */
-	public void countXX(String str) {
+	public int countXX(String str) {
 		int xCounter = 0;
 		for ( int i = 0; i < str.length()-1; i++){
 			if (str.charAt(i) == 'x' && str.charAt(i+1) == 'x') {
@@ -291,7 +291,8 @@ public class Exercises {
 		{}
 
 
-		}
+		return xCounter;
+	}
 
 	/*
 	 Given a string, return a new string made of every other char starting with the first, so "Hello" yields "Hlo".
