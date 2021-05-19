@@ -1,7 +1,9 @@
 package com.techelevator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.SplittableRandom;
 
 public class Exercises {
 
@@ -16,7 +18,12 @@ public class Exercises {
 	 array2List( {"Left", "Right", "Forward", "Back"} )  ->  ["Left", "Right", "Forward", "Back"]
 	 */
 	public List<String> array2List(String[] stringArray) {
-		return null;
+
+		List<String> fruits = new ArrayList<>();
+		for ( String fruit : stringArray ){
+			fruits.add(fruit);
+		}
+		return fruits;
 	}
 
 	/*
@@ -26,7 +33,17 @@ public class Exercises {
 	 list2Array( ["Left", "Right", "Forward", "Back"] )  ->  {"Left", "Right", "Forward", "Back"}
 	 */
 	public String[] list2Array(List<String> stringList) {
-		return null;
+
+			String[] newArray = new String[stringList.size()];
+			for ( int i = 0; i < stringList.size(); i++ ) {
+				 newArray[i] = stringList.get(i);
+			}
+			return newArray;
+
+
+
+
+
 	}
 
 	/*
@@ -37,7 +54,8 @@ public class Exercises {
 	 no4LetterWords( {"Jack", "Jill", "Jane", "John", "Jim"} )  ->  ["Jim"]
 	 */
 	public List<String> no4LetterWords(String[] stringArray) {
-		return null;
+		List<String> exactlyFour = new ArrayList<>();
+
 	}
 
 	/*
@@ -47,7 +65,7 @@ public class Exercises {
 	 arrayInt2ListDouble( {84, 99, 3285, 13, 877} ) -> [42, 49.5, 1642.5, 6.5, 438.5]
 	 */
 	public List<Double> arrayInt2ListDouble(int[] intArray) {
-		return null;
+
 	}
 
 	/*
@@ -57,7 +75,13 @@ public class Exercises {
 	 findLargest( [34070, 1380, 81238, 7782, 234, 64362, 627] ) -> 64362
 	 */
 	public Integer findLargest(List<Integer> integerList) {
-		return null;
+		int largestValue = 0;
+		for (Integer number: integerList) {
+			if (number > largestValue) {
+				largestValue = number;
+			}
+		}
+		return largestValue;
 	}
 
 	/*
@@ -67,7 +91,15 @@ public class Exercises {
 	 oddOnly( {734, 233, 782, 811, 3, 9999} ) -> [233, 811, 3, 9999]
 	 */
 	public List<Integer> oddOnly(Integer[] integerArray) {
-		return null;
+
+		List <Integer> justOdd = new ArrayList<Integer>();
+
+		for (Integer onlyOdd: integerArray){
+			if (onlyOdd % 2 != 0){
+				justOdd.add(onlyOdd);
+			}
+		}
+		return justOdd;
 	}
 
 	/*

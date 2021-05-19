@@ -47,8 +47,8 @@ public class Exercises {
 	 makeOutWord("[[]]", "word") → "[[word]]"
 	 */
 	public String makeOutWord(String out, String word) {
+		return out.substring(0, 2) + word + out.substring(2);
 
-		return new String("<<" + "i,j".substring(stringBits()) + ">>");
 	}
 
 	/*
@@ -59,7 +59,8 @@ public class Exercises {
 	 extraEnd("Hi") → "HiHiHi"
 	 */
 	public String extraEnd(String str) {
-		return null;
+
+		return str.substring(str.length()-2) + str.substring(str.length()-2) + str.substring(str.length()-2);
 	}
 
 	/*
@@ -71,7 +72,10 @@ public class Exercises {
 	 firstTwo("ab") → "ab"
 	 */
 	public String firstTwo(String str) {
-		return null;
+
+		if (str.length()<2){
+			return str;
+		}  return str.substring(0, 2);
 	}
 
 	/*
@@ -81,7 +85,8 @@ public class Exercises {
 	 firstHalf("abcdef") → "abc"
 	 */
 	public String firstHalf(String str) {
-		return null;
+
+		return str.substring(0, str.length() / 2 );
 	}
 
 	/*
@@ -92,7 +97,9 @@ public class Exercises {
 	 withoutEnd("coding") → "odin"
 	 */
 	public String withoutEnd(String str) {
-		return null;
+		String missFirstAndLast = str.substring(1, str.length() - 1);
+
+		return missFirstAndLast;
 	}
 
 	/*
@@ -104,6 +111,7 @@ public class Exercises {
 	 comboString("aaa", "b") → "baaab"
 	 */
 	public String comboString(String a, String b) {
+
 		return null;
 	}
 
@@ -203,7 +211,10 @@ public class Exercises {
 	 twoChar("java", 3) → "ja"
 	 */
 	public String twoChar(String str, int index) {
-		return null;
+		if (index < 0 || index > str.length() - 2){
+			return str.substring(0, 2);
+		} return str.substring(index, (index +2));
+
 	}
 
 	/*
@@ -256,8 +267,14 @@ public class Exercises {
 	 countXX("xxx") → 2
 	 countXX("xxxx") →
 	 */
-	public int countXX(String str) {
-		return 0;
+	public void countXX(String str) {
+		int xCounter = 0;
+		for ( int i = 0; i < str.length()-1; i++){
+			if (str.charAt(i) == 'x' && str.charAt(i+1) == 'x') {
+				xCounter++;
+			}
+
+		return xCounter;
 	}
 
 	/*
@@ -266,9 +283,15 @@ public class Exercises {
 	 doubleX("axaxax") → false
 	 doubleX("xxxxx") → true
 	 */
-	public boolean doubleX(String str) {
-		return false;
-	}
+	boolean doubleX; {
+
+
+		}
+
+		{}
+
+
+		}
 
 	/*
 	 Given a string, return a new string made of every other char starting with the first, so "Hello" yields "Hlo".
