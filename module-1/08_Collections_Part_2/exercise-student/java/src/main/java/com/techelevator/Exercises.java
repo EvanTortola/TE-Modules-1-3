@@ -47,23 +47,10 @@ public class Exercises {
 		group.put("Dog", "Pack");
 		group.put("Crocodile", "Float");
 
-		String groupValue = "";
-		String nameCase = "";
-
-		if (animalName == null){
-			groupValue = "unknown";
-
+		if (!group.containsKey(animalName)){
+			return "unknown";
 		}
-		else if (animalName.length() >= 1){
-			nameCase = animalName.toLowerCase();
-		}
-		if (group.containsKey(nameCase)){
-			groupValue = group.get(nameCase);
-		}
-		else {
-			groupValue = "unknown";
-		}
-		return groupValue;
+		return group.get(animalName);
 	}
 
 	/*
@@ -98,6 +85,7 @@ public class Exercises {
 		discountPct.put("BEDROOM3434", 0.60);
 		discountPct.put("BATH0073", 0.15);
 
+
 		double discountTotal = 0.00;
 		String nameCase = "";
 
@@ -112,6 +100,8 @@ public class Exercises {
 
 		}
 		return discountTotal;
+
+
 	}
 
 	/*
@@ -147,12 +137,23 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> peterPaulPartnership(Map<String, Integer> peterPaul) {
-		if (peterPaul.get("Peter") >= 5000 && peterPaul.get("Paul") >= 10000){
-			int peterPaulPartnership = (peterPaul.get("Peter") / 4) + (peterPaul.get("Paul")/ 4);
-			peterPaul.put("PeterPaulPartnership", peterPaulPartnership );
-		}
 
-		return peterPaul;
+		int peterMoney = peterPaul.get("Peter");
+		int paulMoney = peterPaul.get("Paul");
+
+		if ( peterMoney >= 5000 && paulMoney >= 10000) {
+			int peterPaulPartnershipPeter = peterMoney / 4;
+			peterMoney = peterMoney - peterPaulPartnershipPeter;
+			int peterPaulPartnershipPaul = paulMoney / 4;
+			paulMoney = paulMoney - peterPaulPartnershipPaul;
+			int total = peterPaulPartnershipPaul + peterPaulPartnershipPeter;
+			peterPaul.put("Peter", peterMoney);
+			peterPaul.put("Paul", paulMoney);
+			peterPaul.put("PeterPaulPartnership", total);
+			return peterPaul;
+		}else{
+			return peterPaul;
+		}
 	}
 
 	/*
@@ -248,22 +249,20 @@ public class Exercises {
 	 */
 	public Map<String, Integer> consolidateInventory(Map<String, Integer> mainWarehouse,
 			Map<String, Integer> remoteWarehouse) {
-		Map<String, Integer> warehouseTotal = new HashMap<String, Integer>();
-		for (Map.Entry<String, Integer> item : remoteWarehouse.entrySet()) {
-			warehouseTotal.put(item.getKey(), item.getValue());
-		}
-		for (Map.Entry<String, Integer> item : remoteWarehouse.entrySet()){
-			if (warehouseTotal.containsKey(item.getKey())) {
-				int newWarehouseTotal = warehouseTotal.get(item.getKey()) + remoteWarehouse.get(item.getKey());
-				warehouseTotal.put(item.getKey(), newWarehouseTotal);
-
-
-			}
-			else {
-				warehouseTotal.put(item.getKey(), item.getValue());
+		for (String name : mainWarehouse.keySet()){
+			if(remoteWarehouse.containsKey(name)){
+				remoteWarehouse.put(name, (mainWarehouse.get(name) + remoteWarehouse.get(name)));
+			} else {
+				remoteWarehouse.put(name, mainWarehouse.get(name));
 			}
 		}
-		return warehouseTotal;
+		for (String name : remoteWarehouse.keySet()) {
+			if (!(mainWarehouse.containsKey(name))) {
+				remoteWarehouse.put(name, remoteWarehouse.get(name));
+			}
+		}
+		return remoteWarehouse;
+
 	}
 
 	/*
@@ -282,7 +281,18 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> last2Revisited(String[] words) {
+		Map<String, Integer> keyAndCount = new HashMap<>();
+
+
+		for (String key : words) {
+			if (words.length <= 2) {
+				keyAndCount.put(key, 0);
+				keyAndCount.put(key + 1, 0);
+			}
+		}
+
 		return null;
+
 	}
 
 }
