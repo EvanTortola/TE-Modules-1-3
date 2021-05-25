@@ -5,6 +5,10 @@ public class OldMacdonald {
 
 		FarmAnimal[] farmAnimals = new FarmAnimal[] { new Cow(), new Chicken() };
 
+		FarmAnimal anAnimal = new FarmAnimal("ocelot", "oshoshosh");
+
+
+
 		for (FarmAnimal animal : farmAnimals) {
 			String name = animal.getName();
 			String sound = animal.getSound();

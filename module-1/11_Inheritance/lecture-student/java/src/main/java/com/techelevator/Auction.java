@@ -15,6 +15,8 @@ public class Auction {
 		allBids = new ArrayList<>();
 	}
 
+
+
 	public boolean placeBid(Bid offeredBid) {
 		allBids.add(offeredBid);
 		boolean isCurrentWinningBid = false;
