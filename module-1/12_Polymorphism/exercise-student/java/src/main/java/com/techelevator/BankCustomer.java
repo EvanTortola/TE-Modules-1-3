@@ -39,7 +39,20 @@ public class BankCustomer {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<Accountable> getAccounts() {
-        return accounts;
+    public Accountable[] getAccounts() {
+        Accountable[] thisArray = new Accountable[accounts.size()];
+        return accounts.toArray(thisArray);
+    }
+
+    public boolean isVip(){
+        int totalBalance = 0;
+        for (Accountable account : accounts){
+            totalBalance += account.getBalance();
+
+        }
+        if (totalBalance >= 25000) {
+            return true;
+        }
+        return false;
     }
 }

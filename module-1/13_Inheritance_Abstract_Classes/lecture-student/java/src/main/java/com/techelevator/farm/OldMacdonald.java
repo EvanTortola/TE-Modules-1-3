@@ -4,7 +4,11 @@ public class OldMacdonald {
 	public static void main(String[] args) {
 
 		Singable[] singables =
-				new Singable[] {new Cow(), new Chicken(), new Pig(), new Tractor()};
+				new Singable[] {new Cow(), new Chicken(), new Pig(), new Tractor(), new Cat()};
+
+		((FarmAnimal)singables [1]).sleep();
+
+		FarmAnimal bob = new Cow();
 
 		for (Singable singable : singables) {
 			String name = singable.getName();

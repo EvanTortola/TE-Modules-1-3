@@ -10,11 +10,32 @@ public class CreditCardAccount implements Accountable {
         return accountHolder;
     }
 
+    public CreditCardAccount(String accountHolder, String accountNumber){
+        this.accountHolder = accountHolder;
+        this.accountNumber = accountNumber;
+        debt = 0;
+
+    }
     public String getAccountNumber() {
         return accountNumber;
     }
 
     public int getDebt() {
         return debt;
+    }
+
+    public int pay(int amountToPay) {
+        debt = debt - amountToPay;
+        return debt;
+    }
+
+    public int charge(int amountToCharge){
+        debt = debt + amountToCharge;
+        return debt;
+    }
+
+    @Override
+    public int getBalance() {
+        return debt * -1;
     }
 }
