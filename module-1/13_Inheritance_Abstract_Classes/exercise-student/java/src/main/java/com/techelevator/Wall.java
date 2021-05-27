@@ -6,6 +6,8 @@ public abstract class Wall {
     private String color;
 
     public Wall (String name, String color) {
+        this.name = name;
+        this.color = color;
 
 
     }
@@ -17,4 +19,7 @@ public abstract class Wall {
     public String getColor() {
         return color;
     }
+
+    public abstract int getArea();
+
 }
