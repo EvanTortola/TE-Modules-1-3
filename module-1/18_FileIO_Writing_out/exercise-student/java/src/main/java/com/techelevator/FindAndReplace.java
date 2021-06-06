@@ -2,40 +2,52 @@ package com.techelevator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class FindAndReplace {
 
     public static void main(String[] args)  {
 
+        Scanner userInput = new Scanner(System.in);
+        System.out.println("What is the search word?");
+        String searchWord = userInput.nextLine();
 
-        File inputFile = getInputFileFromUser();
+        System.out.println("What is the replacement word?");
+        String newWord = userInput.nextLine();
 
-        try (Scanner fileScanner = new Scanner (inputFile)) {
-            System.out.println("What is the word you are searching for?");
-            Scanner wordInput = new Scanner(System.in);
-            String word = wordInput.nextLine();
+        System.out.println("WHat is the source file?");
+        String filePath = userInput.nextLine();
+        File userFile = new File(filePath);
 
+        //check for existence of file
+        // if no existence, end program
+        try (Scanner sourceFile = new Scanner(userFile)){
+            if (!userFile.exists()) {
+                System.out.println(filePath + " does not exist!");
+                System.exit(1);
+            } else if (!userFile.isFile()) {
+                System.out.println(filePath + " is not a file!");
+                System.exit(1);
 
-    }
+        }
+        } catch (FileNotFoundException ex) {
+            System.out.println("No such file");
+        }
 
-}
+        System.out.println("What is the destination file?");
+        String destinationPath = userInput.nextLine();
 
-    private static File getInputFileFromUser() {
-
-            Scanner userInput = new Scanner(System.in);
-            System.out.println("Please enter the path to input file >>>");
-            String path = userInput.nextLine();
-
-
-
-            File inputFile = new File(path);
-            if (inputFile.exists() == false){
-                System.out.println(path + " does not exist");
-            } else if (!inputFile.isFile() == false) {
-                System.out.println(path + " is not a file");
+        try (Scanner sourceFile = new Scanner(userFile);
+            PrintWriter finalPath = new PrintWriter(destinationPath))
+        {
+            while (sourceFile.hasNext()) {
+                String inputLine = sourceFile.nextLine();
+                finalPath.println(inputLine.replace(searchWord, newWord));
             }
-            return inputFile;
+
+        } catch (FileNotFoundException exception) {
+
         }
     }
-
+}
