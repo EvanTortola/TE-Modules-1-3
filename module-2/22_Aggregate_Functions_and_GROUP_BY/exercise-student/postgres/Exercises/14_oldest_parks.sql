@@ -2,3 +2,12 @@
 -- Order the results with the oldest park first.
 -- (10 rows)
 
+SELECT park_name, date_established
+FROM park
+WHERE park_id IN (
+        SELECT park_id
+        FROM park
+        ORDER BY date_established
+        LIMIT 10
+)
+ORDER BY date_established ASC;
