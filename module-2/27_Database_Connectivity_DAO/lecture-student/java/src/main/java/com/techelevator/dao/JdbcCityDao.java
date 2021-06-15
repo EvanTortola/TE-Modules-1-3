@@ -13,6 +13,7 @@ public class JdbcCityDao implements CityDao {
     private final JdbcTemplate jdbcTemplate;
 
     public JdbcCityDao(DataSource dataSource) {
+
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
