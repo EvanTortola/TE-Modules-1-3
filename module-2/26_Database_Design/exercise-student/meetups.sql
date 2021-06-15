@@ -78,4 +78,3 @@ VALUES ('Browns Fans 101', 'A Meeting for any and all Browns fans', '2021-06-18'
        ('Finest Establishments in Ohio', 'The best places to visit in Ohio', '2021-08-02', '14:30:00', 45, 2),
        ('Discussion of Naps', 'Talk about all things you love about napping', '2021-06-16', '16:00:00', 90, 3);
        
-INSERT INTO member_interest_group 
