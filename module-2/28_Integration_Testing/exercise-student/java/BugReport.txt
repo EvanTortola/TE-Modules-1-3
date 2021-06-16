@@ -1,12 +1,12 @@
 Bug 1
 -----
-Test that demonstrates problem:
+Test that demonstrates problem: getTimesheetsByEmployeeId
 
 Expected output:
 
 Actual output:
 
-How did you fix this bug?
+How did you fix this bug? replace if with while
 
 
 Bug 2

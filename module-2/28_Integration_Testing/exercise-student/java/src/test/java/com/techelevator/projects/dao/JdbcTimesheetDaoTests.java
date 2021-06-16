@@ -29,7 +29,10 @@ public class JdbcTimesheetDaoTests extends EmployeeProjectsDaoTests {
 
     @Test
     public void getTimesheet_returns_correct_timesheet_for_id() {
-        Assert.fail();
+        Timesheet actualTimesheet = sut.getTimesheet(1L);
+        Assert.assertNotNull("Timesheet not returned", actualTimesheet);
+        assertTimesheetsMatch(TIMESHEET_1, actualTimesheet);
+
     }
 
     @Test
