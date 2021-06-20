@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.sql.Time;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,11 +21,14 @@ public class JdbcTimesheetDaoTests extends EmployeeProjectsDaoTests {
             LocalDate.parse("2021-02-01"), 2.0, false, "Timesheet 4");
     
     private JdbcTimesheetDao sut;
+    private Timesheet testTS;
 
 
     @Before
     public void setup() {
+
         sut = new JdbcTimesheetDao(dataSource);
+        testTS = new Timesheet(0L, 0L, 0L, LocalDate.parse("2021-01-01"), 1.0, true, "Timesheet 0");
     }
 
     @Test
@@ -37,7 +41,9 @@ public class JdbcTimesheetDaoTests extends EmployeeProjectsDaoTests {
 
     @Test
     public void getTimesheet_returns_null_when_id_not_found() {
-        Assert.fail();
+        Timesheet actualTimesheet = sut.getTimesheet(8L);
+        Assert.assertNull(actualTimesheet);
+
     }
 
     @Test
@@ -52,22 +58,61 @@ public class JdbcTimesheetDaoTests extends EmployeeProjectsDaoTests {
 
     @Test
     public void createTimesheet_returns_timesheet_with_id_and_expected_values() {
-        Assert.fail();
+        Timesheet createdTimesheet = sut.createTimesheet(testTS);
+
+        long newId = createdTimesheet.getTimesheetId();
+        Assert.assertTrue(newId > 0L);
+
+        testTS.setTimesheetId(newId);
+        assertTimesheetsMatch(testTS, createdTimesheet);
     }
 
     @Test
     public void created_timesheet_has_expected_values_when_retrieved() {
-        Assert.fail();
+
+        Timesheet timesheet = sut.createTimesheet(testTS);
+
+        long newId = timesheet.getTimesheetId();
+
+        Timesheet retrievedTS = sut.getTimesheet(newId);
+
+
+        assertTimesheetsMatch(timesheet, retrievedTS);
+
+
+
+
+
     }
 
     @Test
     public void updated_timesheet_has_expected_values_when_retrieved() {
-        Assert.fail();
+        Timesheet tsUpdate = sut.getTimesheet(4L);
+
+        tsUpdate.setEmployeeId(2L);
+        tsUpdate.setProjectId(1L);
+        tsUpdate.setDateWorked(LocalDate.parse("2021-01-02"));
+        tsUpdate.setHoursWorked(1.0);
+        tsUpdate.setBillable(false);
+        tsUpdate.setDescription("Timesheet 5");
+
+
+        sut.updateTimesheet(tsUpdate);
+
+        Timesheet retrievedTS = sut.getTimesheet(4L);
+        assertTimesheetsMatch(tsUpdate, retrievedTS);
+
+
     }
 
     @Test
     public void deleted_timesheet_cant_be_retrieved() {
-        Assert.fail();
+        sut.deleteTimesheet(1L);
+
+        Timesheet retrievedSheet = sut.getTimesheet(1L);
+        Assert.assertNull(retrievedSheet);
+
+
     }
 
     @Test
