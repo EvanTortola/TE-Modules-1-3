@@ -6,6 +6,7 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.http.HttpHeaders;
 import java.util.Random;
 
 public class HotelService {
@@ -25,7 +26,13 @@ public class HotelService {
    * @return Reservation
    */
   public Reservation addReservation(String newReservation) {
-    // TODO: Implement method
+    Reservation reservation = makeReservation(newReservation);
+    if(reservation == null) {
+      return null;
+    }
+
+    HttpHeaders = new HttpHeaders();
+
     return null;
   }
 
