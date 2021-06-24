@@ -1,8 +1,11 @@
 package com.techelevator.reservations.model;
 
+import javax.validation.constraints.Min;
+
 public class Reservation {
 
     private int id;
+    @Min(value = 1, message = "The field 'hotelId' is required.")
     private int hotelID;
     private String fullName;
     private String checkinDate;
