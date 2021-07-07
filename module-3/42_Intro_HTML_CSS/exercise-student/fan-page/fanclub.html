@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+    <header>
+        <h1>Bill Parcells</h1>
+        <h2>"The Big Tuna"</h2>
+        <p>Coach, Mentor, Champion, Legend</p>
+        <div>
+        <img src="https://cdn.theathletic.com/app/uploads/2020/05/11142832/Bill-Parcells-1024x724.jpg" />
+        </div>
+    </header> 
+
+    <nav>
+        <a href="index.html">Coach Parcells Fan Page</a>
+    </nav>
+
+    <main>
+        <h2>Join the Fan Club!</h2>
+        <form method="POST" action="/api/fanclub">
+            <label for="fanName">Name:</label>
+            <input id="fanName" type="text" />
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input id="email" name="email" type="text" />
+        </div>
+        <div>
+            <label for="birthDate">Birthday:</label>
+            <input id="birthDate" name="birthDate" type="date" />
+        </div>
+        <div>
+            <label for="favoriteColor">Favorite Color:</label>
+            <input id="favoriteColor" name="favoriteColor" type="color" />
+        </div>
+        <div>
+            <label for="favoriteNumber">Favorite Number</label>
+            <input id="favoriteNumber" name="favoriteNumber" type="number"/>
+        </div>
+        <div>
+            <label for="correctInfo">Please verify all of your information is correct</label>
+            <input id="correctInfo" name="correctInfo" type="checkbox" />
+        </div>
+        <div>
+            <input type="submit" />
+        </div>
+        </form>
+
+    </main>
+    
+</body>
+</html>

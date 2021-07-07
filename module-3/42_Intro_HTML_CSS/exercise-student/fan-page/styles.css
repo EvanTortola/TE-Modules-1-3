@@ -1,0 +1,47 @@
+img {
+    height: 200px;
+    
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: lightslategray;
+}
+
+h1 {
+    font-size: 40px;
+    color: red;
+    text-align: center;
+}
+
+h2 {
+    font-size: 28px;
+    color: navy;
+    text-align: center;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    text-align: center;
+}
+
+section {
+    text-align: center;
+}
+
+tr {
+    text-align: center;
+}
+
+main {
+    text-align: center;
+}
+
+nav {
+    text-align: center;
+}
+
