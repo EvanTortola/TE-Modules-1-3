@@ -5,13 +5,16 @@
 		sumDouble(1, 2) → 3
 		sumDouble(3, 2) → 5
 		sumDouble(2, 2) → 8
-
-		function sumDouble(x, y) {
-			// do logic here
-			// return result;
-			return x + y;
-        }
 */
+	function sumDouble(x, y) {
+		if(x != y) {
+			return x + y;
+		}
+		else {
+			return 2 * (x+y);
+		}
+	}
+
 
 /*
 2. **hasTeen** We'll say that a number is "teen" if it is in the range 13..19 inclusive. 
@@ -20,7 +23,24 @@
 		hasTeen(13, 20, 10) → true
 		hasTeen(20, 19, 10) → true
 		hasTeen(20, 10, 13) → true
-*/
+*/	
+
+function hasTeen(a, b, c) {
+
+    const aIsTeen = (a >= 13 && a <= 19);
+    const bIsTeen = (b >= 13 && b <= 19);
+    const cIsTeen = (c >= 13 && c <= 19);
+
+    if (aIsTeen) {
+        return true;
+    } else if (bIsTeen) {
+        return true;
+    } else if (cIsTeen) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 /* 
 3. **lastDigit** Given two non-negative int values, return true if they have the same 
@@ -31,6 +51,18 @@
 		lastDigit(3, 113) → true
 */
 
+function lastDigit(param1, param2) {
+
+    const param1End = param1 % 10;
+    const param2End = param2 % 10;
+
+    if (param1End === param2End) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 /*
 4. **seeColor** Given a string, if the string begins with "red" or "blue" return that color 
     string, otherwise return the empty string.
@@ -39,6 +71,17 @@
 		seeColor("xxred") → ""
         seeColor("blueTimes") → "blue"
 */
+
+function seeColor(x) {
+
+    if (x.startsWith("red")) {
+        return "red";
+    } else if (x.startsWith("blue")) {
+        return "blue";
+    } else {
+        return "";
+    }
+}
 
 /*
 5. **oddOnly** Write a function that given an array of integer of any length, filters out 
@@ -108,11 +151,13 @@ parameter, `x` passed in.
 12. **createObject** Write a function that creates an object with a property called 
 firstName, lastName, and age. Populate the properties with your values.
 
-	createObject() →
-
-	{
-		firstName,
-		lastName,
-		age
-	}
 */
+function createObject() {
+    const person = {
+    firstName: "Baker",
+    lastName: "Mayfield",
+    age: 25
+    }
+    
+    return person;
+};
