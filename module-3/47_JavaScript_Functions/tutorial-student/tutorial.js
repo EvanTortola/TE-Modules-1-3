@@ -44,8 +44,10 @@
  * @returns {number[]} the filtered array
  */
 function filterArrayToOnlySingleDigitNumbers(arrayToFilter) {
-  return arrayToFilter.filter(
-    // WRITE CODE HERE
+  return arrayToFilter.filter((element) => {
+    return element < 10 && element > -10;
+  }
+  
   );
 }
 
@@ -61,7 +63,11 @@ function filterArrayToOnlySingleDigitNumbers(arrayToFilter) {
  */
 function mapArrayToDoubleAllNumbers(arrayToDouble) {
   return arrayToDouble.map(
-    // WRITE CODE HERE
+    
+    (number) => {
+      return number * 2;
+    }
+
   );
 }
 
@@ -77,8 +83,10 @@ function mapArrayToDoubleAllNumbers(arrayToDouble) {
  * @returns {number} the product of the array
  */
 function reduceArrayToFindProduct(arrayToMultiply) {
-  return arrayToMultiply.reduce(
-    // WRITE CODE HERE
+  return arrayToMultiply.reduce( (product, element) => {
+    return product * element;
+  }
+    
   );
 }
 

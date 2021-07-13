@@ -100,6 +100,18 @@ function seeColor(x) {
 		frontAgain("ed") → true
 */
 
+function frontAgain(x) {
+
+    start = x.substring(0, 2);
+    end = x.substring(x.length - 2);
+
+    if (start == end) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 /*
 7. **cigarParty** When squirrels get together for a party, they like to have cigars. 
 A squirrel party is successful when the number of cigars is between 40 and 60, inclusive. 
@@ -112,6 +124,10 @@ or false otherwise.
 		cigarParty(70, true) → true
 */
 
+function cigarParty(x, y) {
+    return x >= 40 && ((y <= 60 && y == false) || (y == true));
+}
+
 /*
 8. **fizzBuzz** Because you know you can't live without it, FizzBuzz.
 
@@ -122,6 +138,22 @@ or false otherwise.
 		fizzBuzz(8) → 8
 */
 
+function fizzBuzz(x) {
+    answer = "";
+
+    if (x % 3 == 0 && x % 5 == 0) {
+        answer = "FizzBuzz";
+    } else if (x % 5 == 0) {
+        answer = "Buzz";
+    } else if (x % 3 == 0) {
+        answer = "Fizz";
+    } else {
+        answer = x;
+    }
+
+    return answer;
+}
+
 /*
 9. **filterEvens** Write a function that filters an array to only include even numbers.
 
@@ -131,6 +163,10 @@ or false otherwise.
 	filterEvens([100, 8, 21, 24, 62, 9, 7]) → [100, 8, 24, 62]
 */
 
+function filterEvens(evens) {
+    return evens.filter(nums => nums % 2 == 0);
+}
+
 /*
 10. **filterBigNumbers** Write a function that filters numbers greater than or equal to 100.
 
@@ -138,6 +174,10 @@ or false otherwise.
 	filterBigNumbers([3, 2, 7, 1, -100, -120]) → []
 	filterBigNumbers([]) → []
 */
+
+function filterBigNumbers(bigs) {
+    return bigs.filter(nums => nums >= 100);
+}
 
 /*
 11. **filterMultiplesOfX** Write a function to filter numbers that are a multiple of a 

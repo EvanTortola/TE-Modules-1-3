@@ -27,6 +27,9 @@ function printToConsole(value) {
  * @param {number} firstParameter the first parameter to multiply
  * @param {number} secondParameter the second parameter to multiply
  */
+function multiplyTogether(firstParameter, secondParameter) {
+  return firstParameter * secondParameter;
+}
 
 /**
  * This version makes sure that no parameters are ever missing. If
@@ -39,6 +42,9 @@ function printToConsole(value) {
  * @param {number} [secondParameter=0] the second parameter to multiply
  */
 
+function multiplyNoUndefined(firstParameter = 0, secondParameter = 0) {
+  return firstParameter * secondParameter;
+}
 
  
 /**
@@ -86,7 +92,13 @@ function scopeTest() {
     console.log("This won't print!");
   }
 }
-
+/**
+ * 
+ * @param {string} name 
+ * @param {number} age 
+ * @param {string[]} listOfQuirks 
+ * @param {string} separator 
+ */
 function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') {
   let description = `${name} is currently ${age} years old. Their quirks are: `;
   return description + listOfQuirks.join(separator);
@@ -100,7 +112,13 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
  * @returns {number} sum of all the numbers
  */
 function sumAllNumbers(numbersToSum) {
-  return numbersToSum.reduce();
+  return numbersToSum.reduce(
+    (sum, currentElement) => {
+      return sum + currentElement;
+    }
+
+
+  );
 }
 
 /**
