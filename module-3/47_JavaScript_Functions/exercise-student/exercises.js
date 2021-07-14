@@ -20,6 +20,16 @@
  * @returns {boolean} true if they are admitted
  */
 
+function isAdmitted(gpa, satScore, recommendation) {
+
+    if ((gpa > 4.0 || satScore > 1300) || (gpa > 3.0 || satScore > 1200) && recommendation) {
+      return true;
+    } else {
+      return false;
+    }
+   }
+
+
 /**
  * Write a function called useParameterToFilterArray that takes an anonymous
  * function and uses that in the `unfilteredArray` filter function. Return the result.
@@ -27,7 +37,12 @@
  * @param {function} filterFunction the function to filter with
  * @returns {number[]} the filtered array
  */
-let unfilteredArray = [1, 2, 3, 4, 5, 6];
+    let unfilteredArray = [1, 2, 3, 4, 5, 6];
+    function useParameterToFilterArray(filterFunction) {
+        
+        return unfilteredArray.filter(filterFunction);
+    }  
+   
 
 /**
  * Write a function called makeNumber that takes two strings
@@ -42,6 +57,10 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @returns {number} the resultant number
  */
 
+function makeNumber (first, second) {
+    return parseInt(first + second);
+  } 
+
 /**
  * Write a function called addAll that takes an unknown number of parameters
  * and adds all of them together. Return the sum.
@@ -50,11 +69,33 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @returns {number} the sum of all the parameters (or arguments)
  */
 
+ function addAll() {
+    return Array.from(arguments).reduce((sum, element) => {
+         return sum + element;
+     },
+     0);
+ }
+
+
+
 /*
  * Write and document a function called makeHappy that takes
  * an array and prepends 'Happy ' to the beginning of all the
  * words and returns them as a new array. Use the `map` function.
  */
+
+/**
+ * 
+ * @param {string[]} words 
+ */
+
+function makeHappy(words) {
+    let happy = words.map( (word) => {
+      return "Happy " + word;
+    });
+
+    return happy;
+}
 
 /*
  * Write and document a function called getFullAddressesOfProperties
@@ -73,6 +114,19 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  *
  * Use `map` and an anonymous function.
  */
+
+ function getFullAddressesOfProperties(addresses) {
+     return addresses.map(address => {
+         return [address.streetNumber,
+         address.streetName,
+         address.streetType,
+         address.city,
+         address.state,
+         address.zip].join(' ');
+     }
+
+     );
+ }
 
 /*
  * Write and document a function called findLargest.
