@@ -39,3 +39,32 @@ function displayGroceries() {
 
 setPageTitle();
 displayGroceries();
+
+const groceryItem = document.querySelectorAll('li');
+
+groceryItem.forEach((item) => {
+  item.addEventListener('click', (event) => {
+    if (!item.classList.contains('completed')) {
+      item.classList.add('completed');
+    }
+  });
+
+
+
+const markCompleteBtn = document.getElementById('toggleAll');
+markCompleteBtn.addEventListener('click', (event) => {
+  if(allItemsIncomplete) {
+    groceryItem.forEach((item) => {
+      item.classList.add('completed');
+    });
+    markCompleteBtn.innerText = 'Mark All Incomplete';
+    allItemsIncomplete = false;
+  } else {
+    groceryItem.forEach((item) => {
+      item.classList.remove('completed');
+    });
+    markCompleteBtn.innerText = 'Mark All Complete';
+    allItemsIncomplete = true;
+  }
+});
+});

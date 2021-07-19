@@ -60,12 +60,39 @@ function displayReview(review) {
 
 // LECTURE STARTS HERE ---------------------------------------------------------------
 
-// set the product reviews page title
-setPageTitle();
+document.addEventListener('DOMContentLoaded', 
+  () => {
+    // set the product reviews page title
+  setPageTitle();
 // set the product reviews page description
-setPageDescription();
+  setPageDescription();
 // display all of the product reviews on our page
-displayReviews();
+  displayReviews();
+
+ const desc = document.querySelector('.description');
+ desc.addEventListener('click', (event) => {
+   toggleDescriptionEdit(event.target);
+ })
+
+ const inputDesc = document.getElementById('inputDesc');
+ inputDesc.addEventListener('keyup', (event) => {
+   if(event.key === 'Enter' ) {
+     exitDescriptionEdit(event.target, true);
+   }
+   if(event.key === 'Escape') {
+     exitDescriptionEdit(event.target, false);
+   }
+ });
+
+ inputDesc.addEventListener('mouseleave', (event) => {
+   exitDescriptionEdit(event.target, false);
+ });
+
+  
+
+  }
+)
+
 
 /**
  * Take an event on the description and swap out the description for a text box.
