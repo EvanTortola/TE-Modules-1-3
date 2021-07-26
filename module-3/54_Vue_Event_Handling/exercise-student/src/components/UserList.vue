@@ -52,36 +52,41 @@
           <td>{{ user.emailAddress }}</td>
           <td>{{ user.status }}</td>
           <td>
-            <button class="btnEnableDisable">Enable or Disable</button>
+            <button class="btnEnableDisable"
+              v-on:click="flipStatus(user.id)"
+              >{{ user.status === 'Active' ? 'Disable' : 'Enable' }}
+
+
+            </button>
           </td>
         </tr>
       </tbody>
     </table>
 
     <div class="all-actions">
-      <button>Enable Users</button>
-      <button>Disable Users</button>
-      <button>Delete Users</button>
+      <button v-on:click="enableSelectedUsers()" v-bind:disabled="actionButtonDisabled">Enable Users</button>
+      <button v-on:click="disableSelectedUsers()" v-bind:disabled="actionButtonDisabled">Disable Users</button>
+      <button v-on:click="deleteSelectedUsers()" v-bind:disabled="actionButtonDisabled">Delete Users</button>
     </div>
 
-    <button>Add New User</button>
+    <button v-on:click="showForm = !showForm">Add New User</button>
 
-    <form id="frmAddNewUser">
+    <form id="frmAddNewUser" v-show="showForm" v-on:submit.prevent="saveUser">
       <div class="field">
         <label for="firstName">First Name:</label>
-        <input type="text" name="firstName" />
+        <input type="text" name="firstName" v-model="newUser.firstName" />
       </div>
       <div class="field">
         <label for="lastName">Last Name:</label>
-        <input type="text" name="lastName" />
+        <input type="text" name="lastName" v-model="newUser.lastName" />
       </div>
       <div class="field">
         <label for="username">Username:</label>
-        <input type="text" name="username" />
+        <input type="text" name="username" v-model="newUser.username"/>
       </div>
       <div class="field">
         <label for="emailAddress">Email Address:</label>
-        <input type="text" name="emailAddress" />
+        <input type="text" name="emailAddress" v-model="newUser.emailAddress"/>
       </div>
       <button type="submit" class="btn save">Save User</button>
     </form>
@@ -160,7 +165,34 @@ export default {
       ]
     };
   },
-  methods: {},
+
+  methods: {
+    saveUser() {
+      this.users.push(this.newUser);
+      this.clearNewUser();
+    },
+    clearNewUser() {
+      this.newUser = {
+        id: null,
+        firstName: "",
+        lastName: "",
+        username: "",
+        emailAddress: "",
+        status: "Active"
+      };
+    },
+    deleteUser(id) {
+      this.users = this.users.filter((user) => {
+        return user.id !== id;
+      });
+    },
+    flipStatus(id) {
+      const index = this.findUserById(id);
+      this.users[index].status =
+        this.users[index].status === "Active" ? "Disabled" : "Active";
+    }
+  }
+  ,
   computed: {
     filteredList() {
       let filteredUsers = this.users;

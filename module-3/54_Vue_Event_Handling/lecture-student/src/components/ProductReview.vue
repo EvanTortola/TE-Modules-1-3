@@ -35,6 +35,38 @@
         5 Star Review{{ numberOfFiveStarReviews === 1 ? '' : 's' }}
       </div>
     </div>
+    <a href="#" v-on:click.prevent="showForm = true" v-if="!showForm">Show Form</a>
+    <form v-on:submit.prevent="addNewReview" v-if="showForm">
+      <div class="form-element">
+        <label for="reviewer">Name:</label>
+        <input type="text" id="reviewer" v-model="newReview.reviewer" >
+
+      </div>
+
+      <div class="form-element">
+  <label for="title">Title:</label>
+  <input type="text" id="title" v-model="newReview.title" >
+</div>
+<div class="form-element">
+  <label for="rating">Rating:</label>
+  <select id="rating" v-model="newReview.rating">
+    <option value="1">1 Star</option>
+    <option value="2">2 Star</option>
+    <option value="3">3 Star</option>
+    <option value="4">4 Star</option>
+    <option value="5">5 Star</option>
+  </select>
+
+</div>
+<div class="form-element">
+  <label for="review">Review:</label>
+  <textarea id="review" v-model="newReview.review" />
+</div>
+
+  <input type="submit" value="Save">
+  <input type="button" value="Cancel" v-on:click="resetForm">
+
+    </form>
 
     <div
       class="review"
@@ -73,6 +105,8 @@ export default {
       description:
         "Host and plan the perfect cigar party for all of your squirrelly friends.",
       newReview: {},
+      showForm: false,
+      starFilter: 0,
       reviews: [
         {
           reviewer: "Malcolm Gladwell",
@@ -118,28 +152,49 @@ export default {
     },
     numberOfOneStarReviews() {
       return this.reviews.reduce((currentCount, review) => {
-        return currentCount + (review.rating === 1);
+        return currentCount + (review.rating == 1);
       }, 0);
     },
     numberOfTwoStarReviews() {
       return this.reviews.reduce((currentCount, review) => {
-        return currentCount + (review.rating === 2);
+        return currentCount + (review.rating == 2);
       }, 0);
     },
     numberOfThreeStarReviews() {
       return this.reviews.reduce((currentCount, review) => {
-        return currentCount + (review.rating === 3);
+        return currentCount + (review.rating == 3);
       }, 0);
     },
     numberOfFourStarReviews() {
       return this.reviews.reduce((currentCount, review) => {
-        return currentCount + (review.rating === 4);
+        return currentCount + (review.rating == 4);
       }, 0);
     },
     numberOfFiveStarReviews() {
       return this.reviews.reduce((currentCount, review) => {
-        return currentCount + (review.rating === 5);
+        return currentCount + (review.rating == 5);
       }, 0);
+    },
+    filteredReviews() {
+      return this.reviews.filter((review) => {
+        if(this.starFilter == 0) return true;
+        if(review.rating == this.starFilter) {
+          return true;
+        }
+
+      }
+      )
+    }
+  },
+  methods: {
+    addNewReview() {
+      this.newReview.rating = Number(this.newReview.rating);
+      this.reviews.unshift(this.newReview);
+      this.resetForm();
+    },
+    resetForm() {
+      this.newReview = {};
+      this.showForm = false;
     }
   }
 };
