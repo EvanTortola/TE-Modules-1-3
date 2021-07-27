@@ -1,13 +1,24 @@
 <template>
   <div class="book-container">
+    <book-card></book-card>
+    <book-card></book-card>
+    <book-card></book-card>
+    <book-card></book-card>
 
   </div>
 </template>
 
 <script>
 
+
+import BookCard from "./BookCard"
+
 export default {
-    name: 'reading-list'
+    name: 'reading-list',
+    components: {
+      BookCard
+    },
+    
 }
 </script>
 
