@@ -1,9 +1,9 @@
 <template>
   <div class="book-container">
-    <book-card></book-card>
-    <book-card></book-card>
-    <book-card></book-card>
-    <book-card></book-card>
+    <book-card class="book" v-for="book in allBooks" 
+    v-bind:key="book.title" 
+    v-bind:book="book"></book-card>
+    
 
   </div>
 </template>
@@ -14,11 +14,13 @@
 import BookCard from "./BookCard"
 
 export default {
+    components: { BookCard },
     name: 'reading-list',
-    components: {
-      BookCard
-    },
-    
+    computed: {
+      allBooks() {
+        return this.$store.state.books;
+      }
+    }
 }
 </script>
 
